@@ -1,0 +1,19 @@
+# Hugo build artifacts
+public/
+resources/
+.hugo_build.lock
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Local image source (already copied into static/img/)
+Yunli-photo.jpg
+YunLi_photo.png

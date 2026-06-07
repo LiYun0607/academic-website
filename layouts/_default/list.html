@@ -1,0 +1,49 @@
+{{ define "main" }}
+<section class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+</section>
+
+{{ if eq .Section "publications" }}
+<section class="pub-list">
+    {{ $years := .Pages.GroupByDate "2006" }}
+    {{ range $years }}
+    <div class="pub-year-group">
+        <h2 class="pub-year">{{ .Key }}</h2>
+        {{ range .Pages }}
+        <article class="pub-item">
+            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            <p class="pub-authors">{{ .Params.authors }}</p>
+            <p class="pub-venue"><em>{{ .Params.venue }}</em>{{ with .Params.venue_short }} ({{ . }}){{ end }}, {{ .Date.Format "2006" }}</p>
+            <div class="pub-links">
+                {{ with .Params.paper }}{{ if ne . "#" }}<a href="{{ . }}" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>{{ end }}{{ end }}
+                {{ with .Params.code }}{{ if ne . "#" }}<a href="{{ . }}" target="_blank"><i class="fab fa-github"></i> Code</a>{{ end }}{{ end }}
+                {{ with .Params.project }}{{ if ne . "#" }}<a href="{{ . }}" target="_blank"><i class="fas fa-globe"></i> Project</a>{{ end }}{{ end }}
+                {{ with .Params.video }}{{ if ne . "#" }}<a href="{{ . }}" target="_blank"><i class="fab fa-youtube"></i> Video</a>{{ end }}{{ end }}
+            </div>
+        </article>
+        {{ end }}
+    </div>
+    {{ end }}
+</section>
+{{ else if eq .Section "news" }}
+<section class="news-list-full">
+    {{ range .Pages.ByDate.Reverse }}
+    <article class="news-item">
+        <time>{{ .Date.Format "2006-01-02" }}</time>
+        <h3>{{ .Title }}</h3>
+        <div class="prose">{{ .Content }}</div>
+    </article>
+    {{ end }}
+</section>
+{{ else }}
+<section class="list-default">
+    {{ range .Pages }}
+    <article>
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <p>{{ .Summary }}</p>
+    </article>
+    {{ end }}
+</section>
+{{ end }}
+{{ end }}

@@ -1,0 +1,67 @@
+{{ define "main" }}
+<section class="hero">
+    <div class="hero-grid">
+        <div class="hero-avatar">
+            <img src="{{ .Site.Params.authorImage | relURL }}" alt="{{ .Site.Params.author }}" onerror="this.style.display='none'">
+        </div>
+        <div class="hero-info">
+            <h1>{{ .Site.Params.author }}</h1>
+            <p class="title">{{ i18n "title_line" | default "PhD candidate · JSPS DC2 Research Fellow · Student Researcher at TIER IV" }}</p>
+            <p class="tagline">{{ .Site.Language.Params.tagline }}</p>
+            <p class="affiliation"><a href="{{ .Site.Params.affiliationURL }}">{{ .Site.Params.affiliation }}</a></p>
+            <div class="affiliation-logos">
+                <a href="https://www.u-tokyo.ac.jp/" target="_blank" title="The University of Tokyo"><img src="/img/utokyo.png" alt="UTokyo" /></a>
+                <a href="https://tier4.jp/" target="_blank" title="TIER IV"><img src="/img/tieriv.png" alt="TIER IV" /></a>
+            </div>
+            <div class="hero-social">
+                <a href="mailto:{{ .Site.Params.email }}"><i class="fas fa-envelope"></i></a>
+                <a href="{{ .Site.Params.googleScholar }}" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://github.com/{{ .Site.Params.github }}" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://orcid.org/{{ .Site.Params.orcid }}" target="_blank"><i class="fab fa-orcid"></i></a>
+                {{ if .Site.Params.webofscience }}<a href="{{ .Site.Params.webofscience }}" target="_blank" aria-label="Web of Science ResearcherID"><i class="fas fa-flask"></i></a>{{ end }}
+                {{ if .Site.Params.youtube }}<a href="{{ .Site.Params.youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>{{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bio prose">
+    {{ .Content }}
+</section>
+
+{{ $newsSection := printf "%s/news" .Site.Language.Lang }}
+{{ $news := where .Site.RegularPages "Section" "news" }}
+{{ $news = where $news "Lang" .Site.Language.Lang }}
+{{ if $news }}
+<section class="news-preview">
+    <h2>{{ i18n "latest_news" | default "Latest News" }}</h2>
+    <ul class="news-list">
+        {{ range first 5 (sort $news "Date" "desc") }}
+        <li>
+            <time>{{ .Date.Format "2006-01-02" }}</time>
+            <span>{{ .Title }}</span>
+        </li>
+        {{ end }}
+    </ul>
+</section>
+{{ end }}
+
+{{ $pubs := where .Site.RegularPages "Section" "publications" }}
+{{ $pubs = where $pubs "Lang" .Site.Language.Lang }}
+{{ if $pubs }}
+<section class="pubs-preview">
+    <h2>{{ i18n "all_publications" | default "Publications" }}</h2>
+    {{ $years := $pubs.GroupByDate "2006" }}
+    {{ range $years }}
+    <h3 class="pub-year">{{ .Key }}</h3>
+    {{ range .Pages }}
+    <article class="pub-item">
+        <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+        <p class="pub-authors">{{ .Params.authors }}</p>
+        <p class="pub-venue"><em>{{ .Params.venue }}</em>{{ with .Params.venue_short }} ({{ . }}){{ end }}</p>
+    </article>
+    {{ end }}
+    {{ end }}
+</section>
+{{ end }}
+{{ end }}

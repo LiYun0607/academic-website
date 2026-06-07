@@ -1,0 +1,30 @@
+{{ define "main" }}
+<article class="single-page">
+    <header class="page-header">
+        <h1>{{ .Title }}</h1>
+        {{ if .Params.authors }}<p class="pub-authors">{{ .Params.authors }}</p>{{ end }}
+        {{ if .Params.venue }}<p class="pub-venue"><em>{{ .Params.venue }}</em>, {{ .Date.Format "2006" }}</p>{{ end }}
+        {{ if and (ne .Section "publications") (ne .Section "news") }}<time>{{ .Date.Format "2006-01-02" }}</time>{{ end }}
+    </header>
+
+    {{ if eq .Section "publications" }}
+    <div class="pub-links">
+        {{ with .Params.paper }}{{ if ne . "#" }}<a href="{{ . }}" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>{{ end }}{{ end }}
+        {{ with .Params.code }}{{ if ne . "#" }}<a href="{{ . }}" target="_blank"><i class="fab fa-github"></i> Code</a>{{ end }}{{ end }}
+        {{ with .Params.project }}{{ if ne . "#" }}<a href="{{ . }}" target="_blank"><i class="fas fa-globe"></i> Project</a>{{ end }}{{ end }}
+        {{ with .Params.video }}{{ if ne . "#" }}<a href="{{ . }}" target="_blank"><i class="fab fa-youtube"></i> Video</a>{{ end }}{{ end }}
+        {{ with .Params.bibtex }}{{ if ne . "#" }}<a href="{{ . }}" target="_blank"><i class="fas fa-quote-right"></i> BibTeX</a>{{ end }}{{ end }}
+    </div>
+    {{ if .Params.abstract }}
+    <section class="abstract">
+        <h2>Abstract</h2>
+        <p>{{ .Params.abstract }}</p>
+    </section>
+    {{ end }}
+    {{ end }}
+
+    <div class="prose">
+        {{ .Content }}
+    </div>
+</article>
+{{ end }}

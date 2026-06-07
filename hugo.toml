@@ -1,0 +1,70 @@
+baseURL = "https://liyun.example.com/"
+title = "Yun Li | Academic Homepage"
+languageCode = "en-us"
+DefaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+enableEmoji = true
+enableRobotsTXT = true
+buildFuture = true
+
+[params]
+  author = "Yun Li"
+  authorImage = "/img/avatar.jpg"
+  description = "PhD researcher in VLA safety alignment and real-time diffusion planning for autonomous driving"
+  email = "liyunnagoya123@gmail.com"
+  github = "LiYun0607"
+  googleScholar = "https://scholar.google.com/citations?user=zRjWRboAAAAJ&hl=en"
+  orcid = "0009-0002-7824-7751"
+  webofscience = "https://www.webofscience.com/wos/author/record/PEV-4339-2025"
+  linkedin = ""
+  twitter = ""
+  youtube = "https://www.youtube.com/watch?v=NE85PXmHC1I"
+  affiliation = "Tsukada Lab, The University of Tokyo"
+  affiliationURL = "https://www.u-tokyo.ac.jp/"
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    style = "github"
+    lineNos = false
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    weight = 1
+    title = "Yun Li | Academic Homepage"
+    contentDir = "content/en"
+    [languages.en.params]
+      description = "PhD researcher in generative AI and world models for autonomous driving"
+      tagline = "Generative AI · World models · Autonomous driving"
+    [[languages.en.menu.main]]
+      name = "About"
+      url = "/en/"
+      weight = 1
+
+  [languages.zh]
+    languageName = "中文"
+    weight = 2
+    title = "李云 | 个人学术主页"
+    contentDir = "content/zh"
+    [languages.zh.params]
+      description = "自动驾驶中生成模型与世界模型方向博士研究者"
+      tagline = "生成式 AI · 世界模型 · 自动驾驶"
+    [[languages.zh.menu.main]]
+      name = "关于"
+      url = "/zh/"
+      weight = 1
+
+  [languages.ja]
+    languageName = "日本語"
+    weight = 3
+    title = "李 雲 | アカデミックホームページ"
+    contentDir = "content/ja"
+    [languages.ja.params]
+      description = "自動運転における生成 AI と世界モデル研究の博士研究者"
+      tagline = "生成 AI · 世界モデル · 自動運転"
+    [[languages.ja.menu.main]]
+      name = "プロフィール"
+      url = "/ja/"
+      weight = 1

@@ -1,0 +1,15 @@
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-social">
+            {{ if .Site.Params.email }}<a href="mailto:{{ .Site.Params.email }}" aria-label="Email"><i class="fas fa-envelope"></i></a>{{ end }}
+            {{ if .Site.Params.googleScholar }}<a href="{{ .Site.Params.googleScholar }}" aria-label="Google Scholar" target="_blank"><i class="fas fa-graduation-cap"></i></a>{{ end }}
+            {{ if .Site.Params.github }}<a href="https://github.com/{{ .Site.Params.github }}" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>{{ end }}
+            {{ if .Site.Params.orcid }}<a href="https://orcid.org/{{ .Site.Params.orcid }}" aria-label="ORCID" target="_blank"><i class="fab fa-orcid"></i></a>{{ end }}
+            {{ if .Site.Params.webofscience }}<a href="{{ .Site.Params.webofscience }}" aria-label="Web of Science ResearcherID" target="_blank"><i class="fas fa-flask"></i></a>{{ end }}
+            {{ if .Site.Params.linkedin }}<a href="https://linkedin.com/in/{{ .Site.Params.linkedin }}" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>{{ end }}
+            {{ if .Site.Params.twitter }}<a href="https://twitter.com/{{ .Site.Params.twitter }}" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>{{ end }}
+            {{ if .Site.Params.youtube }}<a href="{{ .Site.Params.youtube }}" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>{{ end }}
+        </div>
+        <p class="copyright">&copy; {{ now.Year }} {{ .Site.Params.author }}. Built with <a href="https://gohugo.io/">Hugo</a>.</p>
+    </div>
+</footer>
