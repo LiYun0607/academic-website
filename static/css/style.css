@@ -120,7 +120,8 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
     transition: opacity 0.2s;
 }
 .affiliation-logos img.logo-square {
-    height: 40px;
+    height: 56px;
+    opacity: 1;
 }
 .affiliation-logos a:hover img {
     opacity: 1;
