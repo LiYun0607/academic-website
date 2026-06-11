@@ -23,6 +23,9 @@
                 {{ if .Site.Params.youtube }}<a href="{{ .Site.Params.youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>{{ end }}
                 {{ if .Site.Params.twitter }}<a href="{{ .Site.Params.twitter }}" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>{{ end }}
                 {{ if .Site.Params.instagram }}<a href="{{ .Site.Params.instagram }}" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>{{ end }}
+                {{ if .Site.Params.linkedin }}<a href="{{ .Site.Params.linkedin }}" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>{{ end }}
+                {{ if .Site.Params.xiaohongshu }}<a href="{{ .Site.Params.xiaohongshu }}" target="_blank" aria-label="RedNote 小红书"><svg viewBox="0 0 24 24" width="1em" height="1em" style="vertical-align:-0.125em" fill="none" stroke="currentColor" stroke-width="2"><rect x="1.5" y="4.5" width="21" height="15" rx="3"/><text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="currentColor" stroke="none">红</text></svg></a>{{ end }}
+                {{ if .Site.Params.wechat }}<a href="javascript:void(0)" style="cursor:pointer" title="WeChat: {{ .Site.Params.wechat }}（点击复制 / click to copy）" aria-label="WeChat" onclick="navigator.clipboard.writeText('{{ .Site.Params.wechat }}');this.title='已复制 Copied: {{ .Site.Params.wechat }}'"><i class="fab fa-weixin"></i></a>{{ end }}
             </div>
         </div>
     </div>
